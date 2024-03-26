@@ -175,11 +175,121 @@ for planet in planets:
 while True:
     game.write(200, 100, f"fuel: {fuel}", "white", 20)
     game.write(200, 80, f"fuel_storage: {fuel_storage}", "white", 20)
+    if rocket.collide(p1) and(p1p == False):
+        score += 1
+        fuel_storage += 50
+    if rocket.collide(p2) and(p2p == False):
+        score += 1
+        fuel_storage += 50
+    if rocket.collide(p2) and(p2p == False):
+        score += 1
+        fuel_storage += 50
+    if rocket.collide(p3) and(p3p == False):
+        score += 1
+        fuel_storage += 50
+    if rocket.collide(p4) and(p4p == False):
+        score += 1
+        fuel_storage += 50
+    if rocket.collide(p5) and(p5p == False):
+        score += 1
+        fuel_storage += 50
+    if rocket.collide(p6) and(p6p == False):
+        score += 1
+        fuel_storage += 50
+    if rocket.collide(p7) and(p7p == False):
+        score += 1
+        fuel_storage += 50
+    if rocket.collide(p8) and(p8p == False):
+        score += 1
+        fuel_storage += 50
+    if rocket.collide(p9) and(p9p == False):
+        score += 1
+        fuel_storage += 50
+    if rocket.collide(p10) and(p10p == False):
+        score += 1
+        fuel_storage += 50
+    if rocket.collide(p11) and(p11p == False):
+        score += 1
+        fuel_storage += 50
+    if rocket.collide(p12) and(p12p == False):
+        score += 1
+        fuel_storage += 50
+    if rocket.collide(p13) and(p13p == False):
+        score += 1
+        fuel_storage += 50
+    if rocket.collide(p14) and(p14p == False):
+        score += 1
+        fuel_storage += 50
+    if rocket.collide(p15) and(p15p == False):
+        score += 1
+        fuel_storage += 50
+    if rocket.collide(p16) and(p16p == False):
+        score += 1
+        fuel_storage += 50
+    if rocket.collide(p17) and(p17p == False):
+        score += 1
+        fuel_storage += 50
+    if rocket.collide(p18) and(p18p == False):
+        score += 1
+        fuel_storage += 50
+    if rocket.collide(p19) and(p19p == False):
+        score += 1
+        fuel_storage += 50
+    if rocket.collide(p20) and(p20p == False):
+        score += 1
+        fuel_storage += 50
+    if rocket.collide(p21) and(p21p == False):
+        score += 1
+        fuel_storage += 50
+    if rocket.collide(p22) and(p22p == False):
+        score += 1
+        fuel_storage += 50
+    if rocket.collide(p23) and(p23p == False):
+        score += 1
+        fuel_storage += 50
+    if rocket.collide(p24) and(p24p == False):
+        score += 1
+        fuel_storage += 50
+    if rocket.collide(p25) and(p25p == False):
+        score += 1
+        fuel_storage += 50
+    if rocket.collide(p26) and(p26p == False):
+        score += 1
+        fuel_storage += 50
+    if rocket.collide(p27) and(p27p == False):
+        score += 1
+        fuel_storage += 50
+    if rocket.collide(p28) and(p28p == False):
+        score += 1
+        fuel_storage += 50
+    if rocket.collide(p29) and(p29p == False):
+        score += 1
+        fuel_storage += 50
+    if rocket.collide(p30) and(p30p == False):
+        score += 1
+        fuel_storage += 50
+    if rocket.collide(p31) and(p31p == False):
+        score += 1
+        fuel_storage += 50
+    if rocket.collide(p32) and(p32p == False):
+        score += 1
+        fuel_storage += 50
+    if rocket.collide(p33) and(p33p == False):
+        score += 1
+        fuel_storage += 50
+    if rocket.collide(p34) and(p34p == False):
+        score += 1
+        fuel_storage += 50
+    if rocket.collide(p35) and(p35p == False):
+        score += 1
+        fuel_storage += 50
+    if rocket.collide(p36) and(p36p == False):
+        score += 1
+        fuel_storage += 50                 
     if station.collide(rocket)and(not(fuel == fuel_storage)):
         fuel += 1
     if game.ispressed("w") and(not(fuel == 0 or (fuel < 0))):
         yspeed -= 0.3 * score
-        fuel -= 1
     if game.ispressed("d") and(not(fuel == 0 or (fuel < 0))):
         xspeed -= 0.3 * score
         fuel -= 1
@@ -200,114 +310,7 @@ while True:
         if rocket.collide(planet):
             xspeed *= -1
             yspeed *= -1
-            if rocket.collide(p1) and(p1p == False):
-                score += 1
-                fuel_storage += 50
-            if rocket.collide(p2) and(p2p == False):
-                score += 1
-                fuel_storage += 50
-            if rocket.collide(p3) and(p3p == False):
-                score += 1
-                fuel_storage += 50
-            if rocket.collide(p4) and(p4p == False):
-                score += 1
-                fuel_storage += 50
-            if rocket.collide(p5) and(p5p == False):
-                score += 1
-                fuel_storage += 50
-            if rocket.collide(p6) and(p6p == False):
-                score += 1
-                fuel_storage += 50
-            if rocket.collide(p7) and(p7p == False):
-                score += 1
-                fuel_storage += 50
-            if rocket.collide(p8) and(p8p == False):
-                score += 1
-                fuel_storage += 50
-            if rocket.collide(p9) and(p9p == False):
-                score += 1
-                fuel_storage += 50
-            if rocket.collide(p10) and(p10p == False):
-                score += 1
-                fuel_storage += 50
-            if rocket.collide(p11) and(p11p == False):
-                score += 1
-                fuel_storage += 50
-            if rocket.collide(p12) and(p12p == False):
-                score += 1
-                fuel_storage += 50
-            if rocket.collide(p13) and(p13p == False):
-                score += 1
-                fuel_storage += 50
-            if rocket.collide(p14) and(p14p == False):
-                score += 1
-                fuel_storage += 50
-            if rocket.collide(p15) and(p15p == False):
-                score += 1
-                fuel_storage += 50
-            if rocket.collide(p16) and(p16p == False):
-                score += 1
-                fuel_storage += 50
-            if rocket.collide(p17) and(p17p == False):
-                score += 1
-                fuel_storage += 50
-            if rocket.collide(p18) and(p18p == False):
-                score += 1
-                fuel_storage += 50
-            if rocket.collide(p19) and(p19p == False):
-                score += 1
-                fuel_storage += 50
-            if rocket.collide(p20) and(p20p == False):
-                score += 1
-                fuel_storage += 50
-            if rocket.collide(p21) and(p21p == False):
-                score += 1
-                fuel_storage += 50
-            if rocket.collide(p22) and(p22p == False):
-                score += 1
-                fuel_storage += 50
-            if rocket.collide(p23) and(p23p == False):
-                score += 1
-                fuel_storage += 50
-            if rocket.collide(p24) and(p24p == False):
-                score += 1
-                fuel_storage += 50
-            if rocket.collide(p25) and(p25p == False):
-                score += 1
-                fuel_storage += 50
-            if rocket.collide(p26) and(p26p == False):
-                score += 1
-                fuel_storage += 50
-            if rocket.collide(p27) and(p27p == False):
-                score += 1
-                fuel_storage += 50
-            if rocket.collide(p28) and(p28p == False):
-                score += 1
-                fuel_storage += 50
-            if rocket.collide(p29) and(p29p == False):
-                score += 1
-                fuel_storage += 50
-            if rocket.collide(p30) and(p30p == False):
-                score += 1
-                fuel_storage += 50
-            if rocket.collide(p31) and(p31p == False):
-                score += 1
-                fuel_storage += 50
-            if rocket.collide(p32) and(p32p == False):
-                score += 1
-                fuel_storage += 50
-            if rocket.collide(p33) and(p33p == False):
-                score += 1
-                fuel_storage += 50
-            if rocket.collide(p34) and(p34p == False):
-                score += 1
-                fuel_storage += 50
-            if rocket.collide(p35) and(p35p == False):
-                score += 1
-                fuel_storage += 50
-            if rocket.collide(p36) and(p36p == False):
-                score += 1
-                fuel_storage += 50
+            
     if rocket.collide(a1):
         xspeed = xspeed *0.99
         yspeed = yspeed *0.99
