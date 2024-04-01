@@ -167,7 +167,6 @@ planets.append(p36)
 station = Rectangle(0, 0, 20, 105)
 rocket = Rectangle(0, 0, 15, 45)
 bullet = Circle(0, 0, 10, "red")
-
 for other in others:
     game.add_shape(other)
 for planet in planets:
@@ -198,6 +197,10 @@ game.addclick(click)
 while True:
     game.write(200, 100, f"fuel: {fuel}", "white", 20)
     game.write(200, 80, f"fuel_storage: {fuel_storage}", "white", 20)
+    for planet in planets:
+        if planet.collide(bullet):
+            bullet_x_speed *= -1
+            bullet_y_speed *= -1
     if rocket.collide(p1) and(p1p == False):
         score += 1
         fuel_storage += 50
@@ -365,8 +368,7 @@ while True:
     for planet in planets:
         if rocket.collide(planet):
             xspeed *= -1
-            yspeed *= -1
-            
+            yspeed *= -1            
     if rocket.collide(a1):
         xspeed = xspeed *0.99
         yspeed = yspeed *0.99
@@ -399,6 +401,8 @@ while True:
         other.x += xspeed
     station.y += yspeed
     station.x += xspeed
+    bullet.x += xspeed
+    bullet.y += yspeed
     bullet.x += bullet_x_speed + 5
     bullet.y += bullet_y_speed + 5
     game.update()
