@@ -1,12 +1,16 @@
 #1.4 but 10x bigger
 from tphysics import *
 from random import randint
+import math
 yspeed=0
 xspeed=0
 score=1
 fuel=50
 stfuel=0
 fuel_storage=50
+bullet_x_speed = 0
+bullet_y_speed = 0
+bullet_speed = 10
 p1p = False
 p2p = False
 p3p = False
@@ -162,6 +166,8 @@ p36.fill_colour="green"
 planets.append(p36)
 station = Rectangle(0, 0, 20, 105)
 rocket = Rectangle(0, 0, 15, 45)
+bullet = Circle(0, 0, 10, "red")
+
 for other in others:
     game.add_shape(other)
 for planet in planets:
@@ -172,6 +178,23 @@ for other in others:
     other.y += 1275
 for planet in planets:
     planet.y += 1275
+def click(x,y):
+    global bullet_x_speed
+    global bullet_y_speed
+    
+    dx = rocket.x - x
+    dy = rocket.y - y
+
+    v = math.sqrt(math.pow(dx,2) + math.pow(dy,2))
+    ratio = bullet_speed / v
+
+    bullet_x_speed = -(dx * ratio)
+    bullet_y_speed = -(dy * ratio)
+
+    game.add_shape(bullet)
+    bullet.x = rocket.x
+    bullet.y = rocket.y
+game.addclick(click)    
 while True:
     game.write(200, 100, f"fuel: {fuel}", "white", 20)
     game.write(200, 80, f"fuel_storage: {fuel_storage}", "white", 20)
@@ -376,4 +399,6 @@ while True:
         other.x += xspeed
     station.y += yspeed
     station.x += xspeed
+    bullet.x += bullet_x_speed + 5
+    bullet.y += bullet_y_speed + 5
     game.update()
