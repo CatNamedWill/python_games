@@ -21,21 +21,18 @@ def click(x,y):
     global bullet_x_speed
     global bullet_y_speed
     
-    dx = player.x - x
-    dy = player.y - y
-
-    print(dy)
+    dx = rocket.x - x
+    dy = rocket.y - y
 
     v = math.sqrt(math.pow(dx,2) + math.pow(dy,2))
     ratio = bullet_speed / v
 
     bullet_x_speed = -(dx * ratio)
     bullet_y_speed = -(dy * ratio)
-    print(bullet_y_speed)
 
     game.add_shape(bullet)
-    bullet.x = player.x
-    bullet.y = player.y
+    bullet.x = rocket.x
+    bullet.y = rocket.y
 
 game.addclick(click)
 

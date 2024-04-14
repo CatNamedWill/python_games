@@ -201,6 +201,11 @@ while True:
         if planet.collide(bullet):
             bullet_x_speed *= -1
             bullet_y_speed *= -1
+    if game.ispressed("1"):
+        game.add_shape(station)
+        station.y = rocket.y
+        station.x = rocket.x
+        fuel -= 150
     if rocket.collide(p1) and(p1p == False):
         score += 1
         fuel_storage += 50
