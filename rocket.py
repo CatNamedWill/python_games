@@ -378,8 +378,8 @@ while True:
         xspeed = xspeed *0.99
         yspeed = yspeed *0.99
     if rocket.collide(a2):
-        xspeed = xspeed *0.95
-        yspeed = yspeed *0.95    
+        xspeed = xspeed *0.94
+        yspeed = yspeed *0.94    
     if rocket.collide(p9):
         for planet in planets:
             planet.x -= 1200 - xspeed * 30
