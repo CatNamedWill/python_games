@@ -11,6 +11,9 @@ fuel_storage=50
 bullet_x_speed = 0
 bullet_y_speed = 0
 bullet_speed = 10
+d = 0
+pyspeed = 7.5
+pxspeed = 7.5
 p1p = False
 p2p = False
 p3p = False
@@ -167,16 +170,30 @@ planets.append(p36)
 station = Rectangle(0, 0, 20, 105)
 rocket = Rectangle(0, 0, 15, 45)
 bullet = Circle(0, 0, 10, "red")
+piratesy = Rectangle(180, 0, 15, 55, "white")
+piratesx = Rectangle(0, 0, 45, 15, "white")
+pirates = []
+pirates.append(piratesy)
+pirates.append(piratesx)
 for other in others:
     game.add_shape(other)
 for planet in planets:
-    game.add_shape(planet)    
+    game.add_shape(planet)
+for pirate in pirates:
+    game.add_shape(pirate)
 game.add_shape(rocket)
 game.add_shape(station)
 for other in others:
     other.y += 1275
 for planet in planets:
     planet.y += 1275
+
+def distance(x1, x2, y1, y2):
+    dy = y1 - y2
+    dx = x1 - x2
+    d = sqrt(dx **2 + dy **2)
+    return d
+
 def click(x,y):
     global bullet_x_speed
     global bullet_y_speed
@@ -193,10 +210,13 @@ def click(x,y):
     game.add_shape(bullet)
     bullet.x = rocket.x
     bullet.y = rocket.y
+    
 game.addclick(click)    
 while True:
     game.write(200, 100, f"fuel: {fuel}", "white", 20)
     game.write(200, 80, f"fuel_storage: {fuel_storage}", "white", 20)
+    piratesx.y = piratesy.y
+    piratesx.x = piratesy.x
     for planet in planets:
         if planet.collide(bullet):
             bullet_x_speed *= -1
@@ -396,14 +416,27 @@ while True:
         for other in others:
             other.x += 1200 + xspeed * 30
             other.y -= 1200 - yspeed * 30
-        station.x += 1200
-        station.y -= 1200    
+    if d < 250:
+        if piratesy.x < rocket.x:
+           piratesy.x += pxspeed
+        elif piratesy.x > rocket.x:
+           piratesy.x -= pxspeed
+        if piratesy.y < rocket.y:
+           piratesy.y += pyspeed
+        elif piratesy.y > rocket.y:
+           piratesy.y -= pyspeed
+        
+    station.x += 1200
+    station.y -= 1200    
     for planet in planets:
         planet.y += yspeed
         planet.x += xspeed
     for other in others:
         other.y += yspeed
         other.x += xspeed
+    for pirate in pirates:
+        pirate.y += yspeed
+        pirate.x += xspeed    
     station.y += yspeed
     station.x += xspeed
     bullet.x += xspeed
