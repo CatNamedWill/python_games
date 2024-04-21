@@ -5,6 +5,8 @@ from random import randint
 import math
 yspeed=0
 xspeed=0
+myspeed=0
+mxspeed=0
 score=1
 fuel=5000
 stfuel=0
@@ -167,6 +169,7 @@ a2.fill_colour="cyan"
 others.append(a2)
 p36 = Circle(0, -23000, 750)
 p36.fill_colour="green"
+missile = Rectangle(0, 0, 8, 18)
 planets.append(p36)
 station = Rectangle(0, 0, 20, 105)
 rocket = Rectangle(0, 0, 15, 45)
@@ -192,7 +195,7 @@ for planet in planets:
 def distance(x1, x2, y1, y2):
     dy = y1 - y2
     dx = x1 - x2
-    d = sqrt(dx **2 + dy **2)
+    d = math.sqrt(dx **2 + dy **2)
     return d
 
 def click(x,y):
@@ -417,6 +420,7 @@ while True:
         for other in others:
             other.x += 1200 + xspeed * 30
             other.y -= 1200 - yspeed * 30
+    distance(piratesy.x, rocket.x, piratesy.y, rocket.y)        
     if d < 250:
         if piratesy.x < rocket.x:
             pxspeed += 0.25
@@ -426,9 +430,18 @@ while True:
             pyspeed += 0.15
         elif piratesy.y > rocket.y:
             pyspeed -= 0.15
-        
-    station.x += 1200
-    station.y -= 1200    
+        if randint(1,75) == 1:
+            game.add_shape(missile)
+            missile.x = piratesy.x
+            missile.y = piratesy.y
+    if missile.x < rocket.x:
+        mxspeed += 0.5
+    elif missile.x > rocket.x:
+        mxspeed -= 0.5
+    if missile.y < rocket.y:
+        myspeed += 0.5
+    elif missile.y > rocket.y:
+        myspeed -= 0.5            
     for planet in planets:
         planet.y += yspeed
         planet.x += xspeed
@@ -440,6 +453,10 @@ while True:
         pirate.x += xspeed
         pirate.y += pyspeed
         pirate.x += pxspeed
+    missile.y += yspeed
+    missile.x += xspeed
+    missile.y += myspeed
+    missile.x += mxspeed
     station.y += yspeed
     station.x += xspeed
     bullet.x += xspeed
