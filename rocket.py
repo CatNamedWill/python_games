@@ -1,19 +1,20 @@
 #1.4 but 10x bigger
 from tphysics import *
+#tphysics is found on github
 from random import randint
 import math
 yspeed=0
 xspeed=0
 score=1
-fuel=50
+fuel=5000
 stfuel=0
-fuel_storage=50
+fuel_storage=5000
 bullet_x_speed = 0
 bullet_y_speed = 0
 bullet_speed = 10
 d = 0
-pyspeed = 7.5
-pxspeed = 7.5
+pyspeed = 0
+pxspeed = 0
 p1p = False
 p2p = False
 p3p = False
@@ -170,7 +171,7 @@ planets.append(p36)
 station = Rectangle(0, 0, 20, 105)
 rocket = Rectangle(0, 0, 15, 45)
 bullet = Circle(0, 0, 10, "red")
-piratesy = Rectangle(180, 0, 15, 55, "white")
+piratesy = Rectangle(249, 0, 15, 55, "white")
 piratesx = Rectangle(0, 0, 45, 15, "white")
 pirates = []
 pirates.append(piratesy)
@@ -418,13 +419,13 @@ while True:
             other.y -= 1200 - yspeed * 30
     if d < 250:
         if piratesy.x < rocket.x:
-           piratesy.x += pxspeed
+            pxspeed += 0.25
         elif piratesy.x > rocket.x:
-           piratesy.x -= pxspeed
+            pxspeed -= 0.25
         if piratesy.y < rocket.y:
-           piratesy.y += pyspeed
+            pyspeed += 0.15
         elif piratesy.y > rocket.y:
-           piratesy.y -= pyspeed
+            pyspeed -= 0.15
         
     station.x += 1200
     station.y -= 1200    
@@ -436,7 +437,9 @@ while True:
         other.x += xspeed
     for pirate in pirates:
         pirate.y += yspeed
-        pirate.x += xspeed    
+        pirate.x += xspeed
+        pirate.y += pyspeed
+        pirate.x += pxspeed
     station.y += yspeed
     station.x += xspeed
     bullet.x += xspeed
