@@ -434,13 +434,15 @@ while True:
             game.add_shape(missile)
             missile.x = piratesy.x
             missile.y = piratesy.y
-    if missile.x < rocket.x:
+            myspeed = pyspeed
+            mxspeed = pxspeed 
+    if missile.x < rocket.x + xspeed:
         mxspeed += 0.5
-    elif missile.x > rocket.x:
+    elif missile.x > rocket.x + xspeed:
         mxspeed -= 0.5
-    if missile.y < rocket.y:
+    if missile.y < rocket.y + yspeed:
         myspeed += 0.5
-    elif missile.y > rocket.y:
+    elif missile.y > rocket.y + yspeed:
         myspeed -= 0.5            
     for planet in planets:
         planet.y += yspeed
