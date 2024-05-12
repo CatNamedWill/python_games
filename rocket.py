@@ -177,6 +177,7 @@ bullet = Circle(0, 0, 10, "red")
 piratesy = Rectangle(249, 0, 15, 55, "white")
 piratesx = Rectangle(0, 0, 45, 15, "white")
 pirates = []
+warning = Circle(0, 0, 5, "lime")
 pirates.append(piratesy)
 pirates.append(piratesx)
 for other in others:
@@ -186,6 +187,7 @@ for planet in planets:
 for pirate in pirates:
     game.add_shape(pirate)
 game.add_shape(rocket)
+game.add_shape(warning)
 game.add_shape(station)
 for other in others:
     other.y += 1275
@@ -221,6 +223,8 @@ while True:
     game.write(200, 80, f"fuel_storage: {fuel_storage}", "white", 20)
     piratesx.y = piratesy.y
     piratesx.x = piratesy.x
+    warning.x = rocket.x - xspeed
+    warning.y = rocket.y - yspeed
     for planet in planets:
         if planet.collide(bullet):
             bullet_x_speed *= -1
@@ -422,13 +426,13 @@ while True:
             other.y -= 1200 - yspeed * 30
     distance(piratesy.x, rocket.x, piratesy.y, rocket.y)        
     if d < 250:
-        if piratesy.x < rocket.x:
+        if piratesy.x < rocket.x + xspeed:
             pxspeed += 0.25
-        elif piratesy.x > rocket.x:
+        elif piratesy.x > rocket.x + xspeed:
             pxspeed -= 0.25
-        if piratesy.y < rocket.y:
+        if piratesy.y < rocket.y + yspeed:
             pyspeed += 0.15
-        elif piratesy.y > rocket.y:
+        elif piratesy.y > rocket.y + yspeed:
             pyspeed -= 0.15
         if randint(1,75) == 1:
             game.add_shape(missile)
