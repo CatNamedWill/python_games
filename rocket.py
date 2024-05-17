@@ -17,6 +17,7 @@ bullet_speed = 10
 d = 0
 pyspeed = 0
 pxspeed = 0
+stealthiness = 0
 p1p = False
 p2p = False
 p3p = False
@@ -234,6 +235,10 @@ while True:
         station.y = rocket.y
         station.x = rocket.x
         fuel -= 150
+    if game.ispressed("2"):
+        rocket.fill_colour="navy"
+        stealthiness += 2
+        fuel -= 150    
     if rocket.collide(p1) and(p1p == False):
         score += 1
         fuel_storage += 50
@@ -426,13 +431,13 @@ while True:
             other.y -= 1200 - yspeed * 30
     distance(piratesy.x, rocket.x, piratesy.y, rocket.y)        
     if d < 250:
-        if piratesy.x < rocket.x + xspeed:
+        if piratesy.x < rocket.x + xspeed + randint(stealthiness - stealthiness * 2, stealthiness):
             pxspeed += 0.25
-        elif piratesy.x > rocket.x + xspeed:
+        elif piratesy.x > rocket.x + xspeed + randint(stealthiness - stealthiness * 2, stealthiness):
             pxspeed -= 0.25
-        if piratesy.y < rocket.y + yspeed:
+        if piratesy.y < rocket.y + yspeed + randint(stealthiness - stealthiness * 2, stealthiness):
             pyspeed += 0.15
-        elif piratesy.y > rocket.y + yspeed:
+        elif piratesy.y > rocket.y + yspeed + randint(stealthiness - stealthiness * 2, stealthiness):
             pyspeed -= 0.15
         if randint(1,75) == 1:
             game.add_shape(missile)
