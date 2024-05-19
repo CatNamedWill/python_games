@@ -237,8 +237,8 @@ while True:
         fuel -= 150
     if game.ispressed("2"):
         rocket.fill_colour="navy"
-        stealthiness += 2
-        fuel -= 150    
+        stealthiness += 10
+        fuel -= 50    
     if rocket.collide(p1) and(p1p == False):
         score += 1
         fuel_storage += 50
@@ -445,13 +445,13 @@ while True:
             missile.y = piratesy.y
             myspeed = pyspeed
             mxspeed = pxspeed 
-    if missile.x < rocket.x + xspeed:
+    if missile.x < rocket.x + xspeed + randint(stealthiness - stealthiness * 2, stealthiness):
         mxspeed += 0.5
-    elif missile.x > rocket.x + xspeed:
+    elif missile.x > rocket.x + xspeed + randint(stealthiness - stealthiness * 2, stealthiness):
         mxspeed -= 0.5
-    if missile.y < rocket.y + yspeed:
+    if missile.y < rocket.y + yspeed + randint(stealthiness - stealthiness * 2, stealthiness):
         myspeed += 0.5
-    elif missile.y > rocket.y + yspeed:
+    elif missile.y > rocket.y + yspeed + randint(stealthiness - stealthiness * 2, stealthiness):
         myspeed -= 0.5            
     for planet in planets:
         planet.y += yspeed
